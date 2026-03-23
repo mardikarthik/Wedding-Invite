@@ -380,21 +380,35 @@
 			box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 		}
 
-		.couple-art {
+		 .couple-art {
 			position: absolute;
-			bottom: 20px;
+			bottom: 500px;
 			width: 500px;
 			left: 50%;
-			transform: translateX(-50%);
-			opacity: 0.85;
+			transform: translateX(-50%) translateY(20px);
+			opacity: 0;
 			pointer-events: none;
 			filter: sepia(3) saturate(2) hue-rotate(0deg) brightness(1);
+			transition: opacity 3s ease, transform 3s ease;
+		}
+
+		.couple-art.show {
+			opacity: 0.85;
+			transform: translateX(-50%) translateY(0);
 		}
 
 		.countdown-text {
 			font-size: 40px;
 			margin-top: 80px;
 			width: 750px;
+			opacity: 0;
+			transform: translateY(10px);
+			transition: opacity 2s ease, transform 2s ease;
+		}
+
+		.countdown-text.show {
+			opacity: 1;
+			transform: translateY(0);
 		}
 
 		.countdown-section {
@@ -763,7 +777,7 @@
 		<div class="countdown-text">until the big day</div>
 		<div class="countdown-text">Your esteemed presence shall be our greatest honor	and a cherished blessing.</div>
 
-		<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngarts.com%2Ffiles%2F4%2FGroom-And-Bride-Silhouette-Free-PNG-Image.png&f=1&nofb=1&ipt=45de59bddacac7567d033a2ef12b21d2be7dc85b833d31d96b8bb595e5edfc6b" class="couple-art">
+		<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fosoq.com%2Fclipart-images%2Findian-wedding-clipart%2Findian-wedding-couple-maang-bharai-ceremony-transparent-background-png.png&f=1&nofb=1&ipt=a14d9aa8d210f3f9afec576fc486db8a1f27f882e30fc65c0543bc544dc06185" class="couple-art">
 	</section>
 
 	<!-- Section venue -->
@@ -992,14 +1006,24 @@
 				items.forEach((item, index) => {
 					setTimeout(() => {
 						item.classList.add('show');
-					}, index * 400); // 👈 automatic stagger
+					}, index * 400);
 				});
 
-				obs.disconnect(); // run once
+				obs.disconnect();
 			}
 		}, { threshold: 0.4 });
 
 		timelineObserver.observe(timelineSection);
+
+		setTimeout(() => {
+			document.querySelectorAll('.countdown-text').forEach(el => {
+				el.classList.add('show');
+			});
+		}, 3500);
+
+		setTimeout(() => {
+			document.querySelector('.couple-art').classList.add('show');
+		}, 5000);
 
 	</script>
 
