@@ -200,12 +200,14 @@
 			font-size: 32px;
 			margin-bottom: 32px;
 		}
-
+		
 		.couple {
-			display: flex;
-			justify-content: center;
+			display: grid;
+			grid-template-columns: 1fr auto 1fr;
 			align-items: center;
-			gap: 32px;
+			width: 100%;
+			max-width: 900px;
+			margin: 0 auto;
 		}
 
 		.person {
@@ -658,7 +660,7 @@
 			<div class="timeline-item minor">
 				<div class="timeline-dot">❤</div>
 				<div class="timeline-content">
-					<h2>Hanumar Aradhana</h2>
+					<h2>Hanuman Aradhana</h2>
 					<p class="timeline-venue">Village Semraha</p>
 					<p class="timeline-time">25th April 01:00 PM</p>
 				</div>
