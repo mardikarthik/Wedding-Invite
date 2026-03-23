@@ -403,7 +403,7 @@
 			width: 750px;
 			opacity: 0;
 			transform: translateY(10px);
-			transition: opacity 2s ease, transform 2s ease;
+			transition: opacity 1s ease, transform 1s ease;
 		}
 
 		.countdown-text.show {
@@ -851,9 +851,7 @@
 			s.innerText = Math.floor((diff % (1000 * 60)) / 1000);
 		}, 1000);
 
-		// fade in on scroll 
 		const elements = document.querySelectorAll('.fade-in');
-
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
@@ -861,7 +859,7 @@
 				}
 			});
 		}, {
-			threshold: 0.5 // trigger when 20% visible
+			threshold: 0.5
 		});
 
 		elements.forEach(el => observer.observe(el));
@@ -874,11 +872,11 @@
 				if (entry.isIntersecting) {
 					
 					setTimeout(() => {
-						footnote.style.transition = "opacity 0.8s ease";
+						footnote.style.transition = "opacity 1s ease";
 						footnote.style.opacity = "1";
-					}, 1000); // ⏳ 2 sec delay
+					}, 1000);
 					
-					obs.unobserve(entry.target); // run only once
+					obs.unobserve(entry.target);
 				}
 			});
 		}, { threshold: 0.5 });
@@ -997,7 +995,6 @@
 		});
 
 		const timelineSection = document.querySelector('.timeline');
-
 		const timelineObserver = new IntersectionObserver((entries, obs) => {
 			if (entries[0].isIntersecting) {
 				
@@ -1006,7 +1003,7 @@
 				items.forEach((item, index) => {
 					setTimeout(() => {
 						item.classList.add('show');
-					}, index * 400);
+					}, index * 300);
 				});
 
 				obs.disconnect();
@@ -1014,17 +1011,27 @@
 		}, { threshold: 0.4 });
 
 		timelineObserver.observe(timelineSection);
-		setTimeout(() => {
-			document.querySelectorAll('.countdown-text').forEach((el, i) => {
-				setTimeout(() => {
-					el.classList.add('show');
-				}, i * 500);
-			});
-		}, 3000);
 
-		setTimeout(() => {
-			document.querySelector('.couple-art').classList.add('show');
-		}, 5000);
+		const countdownSection = document.querySelector('.countdown-section');
+		const countdownObserver = new IntersectionObserver((entries, obs) => {
+			if (entries[0].isIntersecting) {
+				setTimeout(() => {
+					document.querySelectorAll('.countdown-text').forEach((el, i) => {
+						setTimeout(() => {
+							el.classList.add('show');
+						}, i * 500);
+					});
+				}, 1000);
+
+				setTimeout(() => {
+					document.querySelector('.couple-art').classList.add('show');
+				}, 2000);
+
+				obs.disconnect();
+			}
+		}, { threshold: 0.5 });
+
+		countdownObserver.observe(countdownSection);
 
 	</script>
 
