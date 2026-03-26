@@ -8,7 +8,7 @@
 
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-	<style>
+	<style>		
 		* {
 			margin: 0;
 			padding: 0;
@@ -51,7 +51,6 @@
 			animation-delay: 2s;
 		}
 
-		/* Animation keyframes */
 		@keyframes fadeRise {
 			to {
 				opacity: 1;
@@ -81,8 +80,7 @@
 
 		@keyframes wave {
 
-			0%,
-			100% {
+			0%,	100% {
 				filter: brightness(1);
 			}
 
@@ -620,6 +618,45 @@
 			opacity: 0.7;
 			text-align: center;
 		}
+
+		.nextBtnWrapper {
+			position: fixed;
+			bottom: 25px;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 10;
+		}
+
+		.nextBtn {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border: none;
+			background: #b8860b;
+			color: white;
+			font-size: 36px;
+			cursor: pointer;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+			z-index: 9999;
+			animation: floatY 2s ease-in-out infinite;
+			transition: opacity 0.3s ease, transform 0.2s ease, background 0.3s ease;
+		}
+		
+		@keyframes floatY {
+			0%, 100% {
+				transform: translateY(0);
+				box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+			}
+			50% {
+				transform: translateY(-8px);
+				box-shadow: 0 8px 18px rgba(212,175,55,0.6);
+			}
+		}
+
+		.nextBtn:hover {
+			transform: scale(1.1) translateY(-8px);
+			background: #b8962e;
+		}
 		
 	</style>
 </head>
@@ -808,23 +845,26 @@
 			<span>beginning with your blessings.</span>
 		</p>
 
-		<div class="om-symbol">—» ॐ «—</div> ।।«—</div>
+		<div class="om-symbol">—» ॐ «—</div>
 	</div>
 
+	<div class="nextBtnWrapper">
+		<button class="nextBtn">↓</button>
+	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 	<script>
 		setTimeout(() => {
 			document.querySelector('.curtain-container').style.display = 'none';
-		}, 4500); // match animation duration
+		}, 4500);
 
 		// opening confetti
 		setTimeout(() => {
 			const duration = 1 * 1000;
 			const end = Date.now() + duration;
 
-			const colors = ['#FFD700', '#FFA500', '#FFB347']; // gold, orange, light orange
+			const colors = ['#FFD700', '#FFA500', '#FFB347'];
 
 			(function frame() {
 				// LEFT side
@@ -877,6 +917,7 @@
 
 		elements.forEach(el => observer.observe(el));
 
+		// invite footnote 
 		const inviteSection = document.querySelector('.royal-invite');
 		const footnote = inviteSection.querySelector('.footnote');
 
@@ -896,9 +937,7 @@
 
 		footnoteObserver.observe(inviteSection);
 
-
-
-		// scratch		
+		// scratch 
 		function revealFully(ctx, canvas) {
 			let alpha = 1;
 
@@ -913,7 +952,7 @@
 				requestAnimationFrame(fadeOut);
 				} else {
 				canvas.style.pointerEvents = "none";
-				canvas.style.display = "none"; // completely gone
+				canvas.style.display = "none";
 				}
 			}
 
@@ -938,7 +977,7 @@
 				const wrap = document.querySelector('.coin-wrap');
 				setTimeout(() => {
 					wrap.classList.add('compact');
-				}, 400); // slight delay after reveal
+				}, 400);
 			}
 		}
 
@@ -949,16 +988,10 @@
 			c.height = rect.height;
 			ctx.save();
 
-			// move origin to center
 			ctx.translate(c.width / 2, c.height / 2);
-
-			// rotate 30 degrees
 			ctx.rotate((30 * Math.PI) / 180);
-
-			// move back
 			ctx.translate(-c.width / 2, -c.height / 2);
 
-			// create SAME horizontal gradient
 			const grad = ctx.createLinearGradient(0, 0, c.width, 0);
 
 			grad.addColorStop(0, "#cfcfcf");
@@ -1007,6 +1040,7 @@
 			c.ontouchmove = scratch;
 		});
 
+		// timeline 
 		const timelineSection = document.querySelector('.timeline');
 		const timelineObserver = new IntersectionObserver((entries, obs) => {
 			if (entries[0].isIntersecting) {
@@ -1025,6 +1059,7 @@
 
 		timelineObserver.observe(timelineSection);
 
+		// countdown 
 		const countdownSection = document.querySelector('.countdown-section');
 		const countdownObserver = new IntersectionObserver((entries, obs) => {
 			if (entries[0].isIntersecting) {
@@ -1034,18 +1069,85 @@
 							el.classList.add('show');
 						}, i * 500);
 					});
-				}, 1000);
+				}, 500);
 
 				setTimeout(() => {
 					document.querySelector('.couple-art').classList.add('show');					
 					document.querySelector('.shaloka').classList.add('show');
-				}, 2000);
+				}, 1500);
 
 				obs.disconnect();
 			}
 		}, { threshold: 0.5 });
 
 		countdownObserver.observe(countdownSection);
+
+		// next button 
+		const sections = document.querySelectorAll("section");
+		const btn = document.querySelector(".nextBtn");
+
+		btn.addEventListener("click", () => {
+			let currentSection = null;
+
+			for (let section of sections) {
+				const rect = section.getBoundingClientRect();
+
+				if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+					currentSection = section;
+					break;
+				}
+			}
+
+			if (currentSection && currentSection.classList.contains("countdown-section")) {
+				window.scrollTo({
+					top: document.body.scrollHeight,
+					behavior: "smooth"
+				});
+				return;
+			}
+
+			let nextSection = null;
+
+			for (let section of sections) {
+				const rect = section.getBoundingClientRect();
+
+				if (rect.top > 50) {
+					nextSection = section;
+					break;
+				}
+			}
+
+			if (nextSection) {
+				nextSection.scrollIntoView({
+					behavior: "smooth"
+				});
+			}
+		});
+
+		window.addEventListener("scroll", () => {
+			const lastSection = sections[sections.length - 1];
+			const rect = lastSection.getBoundingClientRect();
+
+			if (rect.top < window.innerHeight / 2) {
+				btn.style.display = "none";
+			} else {
+				btn.style.display = "block";
+			}
+		});
+
+		let scrollTimeout;
+
+	window.addEventListener("scroll", () => {
+		btn.style.opacity = "0";
+		btn.style.pointerEvents = "none";
+
+		clearTimeout(scrollTimeout);
+
+		scrollTimeout = setTimeout(() => {
+			btn.style.opacity = "1";
+			btn.style.pointerEvents = "auto";
+		}, 150);
+	});
 
 	</script>
 
