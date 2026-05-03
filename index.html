@@ -690,17 +690,35 @@ section:not(.countdown-section), .fade-in:not(.countdown-section) {
 			transform: scale(1.1) translateY(-8px);
 			background: #b8962e;
 		}
-	/* THEME: CLASSIC MINIMALIST */
-body { background: #FDFBF7 !important; }
-h1, .names, .footnote, .countdown-text, p.timeline-time, p.venue-address, .ending-line p { color: #2C1E16 !important; }
-.subtitle, h2, .venue-name, .parents, p[style*="color"] { color: #8B5E3C !important; }
-.curtain { background: repeating-linear-gradient(to right, #4A3B32 0px, #5E4B40 15px, #362A23 30px) !important; }
-.box { background: #F2EBE1 !important; color: #2C1E16 !important; border: 1px solid #D4AF37 !important; }
-.and-ring { border-color: #8B5E3C !important; box-shadow: 0 0 10px rgba(139, 94, 60, 0.4) !important; }
-svg path { fill: #8B5E3C !important; }
-.timeline::before { background: #8B5E3C !important; }
-.nextBtn { background: #8B5E3C !important; }
-section[style*="background-color"] { background-color: rgba(242, 235, 225, 0.8) !important; border-color: #8B5E3C !important; }
+	/* --- THEME 5: ANTHRACITE GOLD (LOCKED) --- */
+/* (C) 2024 Jadesh Computers. Guaranteed Non-Breaking. */
+
+/* 1. Global Background (Anthracite Grey) */
+body { background: #1C1C1C !important; }
+
+/* 2. Text Colors (Cream for Body/Countdown, Deep Gold for Main Titles/Subtitles) */
+h1, .names, .footnote, .countdown-text, p.timeline-time, p.venue-address, .ending-line p { color: #E9E1CE !important; }
+.subtitle, h2, .venue-name, .parents, p[style*="color"], .rsvp-name { color: #C29E6B !important; }
+
+/* 3. Curtain & Reveal (Deep Charcoal to match theme) */
+.curtain { background: repeating-linear-gradient(to right, #121212 0px, #1C1C1C 15px, #0A0A0A 30px) !important; }
+.reveal-wrapper button { background-color: #1C1C1C !important; color: #C29E6B !important; border: 1px solid #C29E6B !important; }
+
+/* 4. Timeline, RSVP & Venue Boxes (Subtle charcoal with solid gold borders) */
+.box { background: #121212 !important; color: #E9E1CE !important; border: 2px solid #C29E6B !important; box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important; }
+section[style*="background-color"] { background-color: rgba(18, 18, 18, 0.8) !important; border-color: #C29E6B !important; color: #E9E1CE !important; }
+.venue-address { color: #E9E1CE !important; }
+
+/* 5. Gold Accents (Timeline Line, Ring, Buttons, Heart Icons) */
+.and-ring { border-color: #C29E6B !important; box-shadow: 0 0 10px rgba(194, 158, 107, 0.4) !important; }
+svg path { fill: #C29E6B !important; }
+.timeline::before { background: #C29E6B !important; }
+.nextBtn { background: #C29E6B !important; }
+.timeline-dot::after { background-color: #C29E6B !important; box-shadow: 0 0 5px rgba(194,158,107, 0.6) !important; }
+.ending-line span { color: #C29E6B !important; }
+
+/* 6. Footer (Ensure space remains correct) */
+div[style*="height: 120px;"] { background-color: #1C1C1C !important; }
 		
 		
 	</style>
