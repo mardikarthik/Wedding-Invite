@@ -690,35 +690,37 @@ section:not(.countdown-section), .fade-in:not(.countdown-section) {
 			transform: scale(1.1) translateY(-8px);
 			background: #b8962e;
 		}
-	/* --- THEME 5: ANTHRACITE GOLD (LOCKED) --- */
-/* (C) 2024 Jadesh Computers. Guaranteed Non-Breaking. */
+/* --- THEME 6: TRADITIONAL WATERCOLOR (FINAL) --- */
+body { 
+    background-color: #FDF5E6 !important;
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), 
+                      radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(245,222,179,0.2) 100%) !important;
+    background-attachment: fixed !important;
+}
 
-/* 1. Global Background (Anthracite Grey) */
-body { background: #1C1C1C !important; }
+/* 1. Dark Suitable Text (Deep Charcoal/Espresso) */
+h1, .names, .footnote, .countdown-text, p.timeline-time, p.venue-address, .ending-line p { 
+    color: #2C1E16 !important; 
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5) !important;
+}
 
-/* 2. Text Colors (Cream for Body/Countdown, Deep Gold for Main Titles/Subtitles) */
-h1, .names, .footnote, .countdown-text, p.timeline-time, p.venue-address, .ending-line p { color: #E9E1CE !important; }
-.subtitle, h2, .venue-name, .parents, p[style*="color"], .rsvp-name { color: #C29E6B !important; }
+/* 2. Traditional Elements Color (Antique Maroon/Gold) */
+.subtitle, h2, .venue-name, .parents, p[style*="color"] { color: #5D1B1B !important; }
 
-/* 3. Curtain & Reveal (Deep Charcoal to match theme) */
-.curtain { background: repeating-linear-gradient(to right, #121212 0px, #1C1C1C 15px, #0A0A0A 30px) !important; }
-.reveal-wrapper button { background-color: #1C1C1C !important; color: #C29E6B !important; border: 1px solid #C29E6B !important; }
+/* 3. The Containers (Cream Watercolor texture) */
+.box, section[style*="background-color"] { 
+    background: rgba(252, 248, 238, 0.9) !important; 
+    border: 2px solid #5D1B1B !important; 
+    border-radius: 15px !important;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1) !important;
+}
 
-/* 4. Timeline, RSVP & Venue Boxes (Subtle charcoal with solid gold borders) */
-.box { background: #121212 !important; color: #E9E1CE !important; border: 2px solid #C29E6B !important; box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important; }
-section[style*="background-color"] { background-color: rgba(18, 18, 18, 0.8) !important; border-color: #C29E6B !important; color: #E9E1CE !important; }
-.venue-address { color: #E9E1CE !important; }
-
-/* 5. Gold Accents (Timeline Line, Ring, Buttons, Heart Icons) */
-.and-ring { border-color: #C29E6B !important; box-shadow: 0 0 10px rgba(194, 158, 107, 0.4) !important; }
-svg path { fill: #C29E6B !important; }
-.timeline::before { background: #C29E6B !important; }
-.nextBtn { background: #C29E6B !important; }
-.timeline-dot::after { background-color: #C29E6B !important; box-shadow: 0 0 5px rgba(194,158,107, 0.6) !important; }
-.ending-line span { color: #C29E6B !important; }
-
-/* 6. Footer (Ensure space remains correct) */
-div[style*="height: 120px;"] { background-color: #1C1C1C !important; }
+/* 4. Traditional Accents */
+.and-ring { border: 2px solid #5D1B1B !important; }
+svg path { fill: #5D1B1B !important; }
+.timeline::before { background: #5D1B1B !important; }
+.nextBtn { background: #5D1B1B !important; border-radius: 50px !important; }
+.curtain { background: #5D1B1B !important; }
 		
 		
 	</style>
